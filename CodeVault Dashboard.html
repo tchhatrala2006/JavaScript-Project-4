@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeVault Dashboard</title>
+    <style>
+    /* ===========================
+   GOOGLE FONT
+===========================*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:#fff;
+    padding:30px;
+}
+
+/* ===========================
+   DASHBOARD
+===========================*/
+
+.dashboard{
+    width:90%;
+    margin:auto;
+}
+
+.dashboard-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.dashboard-header h1{
+    color:#d4af37;
+    font-size:42px;
+    margin-bottom:10px;
+    text-shadow:0 0 15px rgba(212,175,55,.4);
+}
+
+.dashboard-header p{
+    color:#cfcfcf;
+}
+
+.dashboard-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+
+.dashboard-card{
+    background:#1a1a1a;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    transition:.4s;
+    box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+
+.dashboard-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(212,175,55,.35);
+}
+
+.card-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#d4af37;
+    color:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.card-content h3{
+    color:#dcdcdc;
+    margin-bottom:8px;
+}
+
+.card-content h2{
+    color:#d4af37;
+    font-size:32px;
+}
+
+/* ===========================
+   FORM
+===========================*/
+
+.add-snippet{
+    width:90%;
+    margin:60px auto;
+}
+
+.form-container{
+    background:#1a1a1a;
+    padding:35px;
+    border-radius:15px;
+    border:1px solid #333;
+    box-shadow:0 0 25px rgba(212,175,55,.15);
+}
+
+.form-container h2{
+    text-align:center;
+    color:#d4af37;
+    margin-bottom:30px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    color:#eee;
+    font-weight:600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    padding:14px;
+    border:1px solid #444;
+    border-radius:10px;
+    background:#111;
+    color:white;
+    outline:none;
+    font-size:15px;
+    transition:.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#d4af37;
+    box-shadow:0 0 10px rgba(212,175,55,.4);
+}
+
+textarea{
+    resize:vertical;
+}
+
+/* ===========================
+   BUTTON
+===========================*/
+
+.save-btn{
+    width:100%;
+    padding:15px;
+    background:#d4af37;
+    color:black;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+    transition:.3s;
+}
+.save-btn1{
+    width:100%;
+    padding:15px;
+    background:#d4af37;
+    color:black;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+    transition:.3s;
+        margin-top: 10px;
+}
+
+
+.save-btn:hover{
+    background:#f0c94d;
+    transform:scale(1.02);
+}
+.save-btn1:hover{
+    background:#f0c94d;
+    transform:scale(1.02);
+}
+/* ===========================
+   ALL SNIPPETS
+===========================*/
+
+#pc{
+    width:90%;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+/* ===========================
+   CARD
+===========================*/
+
+/* #pc div{
+    background:#1a1a1a;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:22px;
+    box-shadow:0 0 20px rgba(0,0,0,.5);
+    transition:.4s;
+} */
+
+#pc div:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px rgba(212,175,55,.35);
+}
+
+#pc h1{
+    font-size:18px;
+    margin-bottom:10px;
+    color:#fff;
+    word-break:break-word;
+}
+
+#pc h1:nth-child(1){
+    color:#d4af37;
+    font-size:24px;
+}
+
+#pc button{
+    padding:10px 18px;
+    margin-top:15px;
+    margin-right:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+#pc button:first-of-type{
+    background:#d4af37;
+    color:black;
+}
+
+#pc button:first-of-type:hover{
+    background:#f5c84c;
+}
+
+#pc button:last-of-type{
+    background:#b91c1c;
+    color:white;
+}
+
+#pc button:last-of-type:hover{
+    background:#ef4444;
+}
+
+/* ===========================
+   RESPONSIVE
+===========================*/
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .dashboard,
+    .add-snippet,
+    #pc{
+        width:100%;
+    }
+
+    .dashboard-header h1{
+        font-size:30px;
+    }
+
+    .form-container{
+        padding:20px;
+    }
+
+}
+/* #pc{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+    margin-top:40px;
+}*/
+
+/* .snippet-card{
+    background:#ffffff;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+    transition:.3s;
+    border-left:6px solid #4f46e5;
+}  */
+
+/* .snippet-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 30px rgba(0,0,0,.2);
+} */
+/* 
+.snippet-title{
+    color:#4f46e5;
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.snippet-language{
+    color:#0f766e;
+    font-size:18px;
+    margin:10px 0;
+} */
+
+/* .snippet-category{
+    color:#ea580c;
+    font-size:18px;
+    margin:10px 0;
+} */
+
+/* .snippet-code{
+    background:#1e293b;
+    color:#f8fafc;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+    overflow:auto;
+    white-space:pre-wrap;
+    font-size:15px;
+} */
+
+/* .snippet-favorite{
+    color:#dc2626;
+    font-size:17px;
+    font-weight:bold;
+}  */
+/* .white{
+    background-color: whitesmoke;
+    color: black;
+     padding:30px;
+} */
+ #pc{
+    width:90%;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+    gap:25px;
+}
+
+.snippet-card{
+    border-radius:18px;
+    padding:22px;
+    transition:.35s;
+    border-left:6px solid #3b82f6;
+}
+
+.snippet-card:hover{
+    transform:translateY(-8px);
+}
+
+.snippet-title{
+    font-size:26px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.snippet-language,
+.snippet-category,
+.snippet-favorite{
+    font-size:17px;
+    margin:10px 0;
+    font-weight:500;
+}
+
+.snippet-code{
+    margin:18px 0;
+    padding:15px;
+    border-radius:10px;
+    font-size:15px;
+    overflow:auto;
+    white-space:pre-wrap;
+    line-height:1.6;
+}
+
+.snippet-card button{
+    margin-top:15px;
+    margin-right:10px;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+body.dark .snippet-card{
+    background:#1e293b;
+    color:white;
+    border-left:6px solid #d4af37;
+    box-shadow:0 15px 35px rgba(0,0,0,.45);
+}
+
+body.dark .snippet-title{
+    color:#facc15;
+}
+
+body.dark .snippet-language{
+    color:#60a5fa;
+}
+
+body.dark .snippet-category{
+    color:#34d399;
+}
+
+body.dark .snippet-favorite{
+    color:#fb7185;
+}
+
+body.dark .snippet-code{
+    background:#0f172a;
+    color:#e2e8f0;
+    border:1px solid #334155;
+}
+
+body.dark .snippet-card button:first-of-type{
+    background:#facc15;
+    color:black;
+}
+
+body.dark .snippet-card button:last-of-type{
+    background:#ef4444;
+    color:white;
+}
+body.white .snippet-card{
+    background:white;
+    color:#1e293b;
+    border-left:6px solid #2563eb;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+body.white .snippet-title{
+    color:#2563eb;
+}
+
+body.white .snippet-language{
+    color:#0f766e;
+}
+
+body.white .snippet-category{
+    color:#ea580c;
+}
+
+body.white .snippet-favorite{
+    color:#dc2626;
+}
+
+body.white .snippet-code{
+    background:#eff6ff;
+    color:#1e293b;
+    border:1px solid #bfdbfe;
+}
+
+body.white .snippet-card button:first-of-type{
+    background:#2563eb;
+    color:white;
+}
+
+body.white .snippet-card button:last-of-type{
+    background:#ef4444;
+    color:white;
+}
+ body.white{
+    background:#f4f6fb;
+    color:#222;
+}
+
+body.white .dashboard-card,
+body.white .form-container,
+body.white .snippet-card{
+    background:#fff;
+    border:1px solid #ddd;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+body.white .dashboard-header h1,
+body.white .card-content h2,
+body.white .form-container h2{
+    color:#2563eb;
+}
+
+body.white .card-content h3,
+body.white label,
+body.white .dashboard-header p{
+    color:#444;
+}
+
+body.white input,
+body.white select,
+body.white textarea{
+    background:#f9fafb;
+    color:#222;
+    border:1px solid #ccc;
+}
+
+body.white .snippet-code{
+    background:#eef2ff;
+    color:#111827;
+}
+
+body.white .card-icon{
+    background:#2563eb;
+    color:white;
+}
+
+body.white .save-btn,
+body.white .save-btn1{
+    background:#2563eb;
+    color:white;
+}
+/* .dark{
+     background:#0f0f0f;
+    color:#fff;
+    padding:30px;
+} */
+body.dark{
+    background:#0f0f0f;
+    color:white;
+}
+
+body.dark .dashboard-card,
+body.dark .form-container,
+body.dark .snippet-card{
+    background:#1a1a1a;
+    border:1px solid #333;
+}
+
+body.dark input,
+body.dark select,
+body.dark textarea{
+    background:#111;
+    color:white;
+    border:1px solid #444;
+}
+
+body.dark .card-icon{
+    background:#d4af37;
+    color:black;
+}
+
+body.dark .save-btn,
+body.dark .save-btn1{
+    background:#d4af37;
+    color:black;
+}
+.theme-btn{
+    margin-top:10px;
+    padding:10px 22px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    transition:.4s;
+    box-shadow:0 8px 18px rgba(79,70,229,.35);
+}
+
+.theme-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 22px rgba(79,70,229,.45);
+}
+
+.theme-btn:active{
+    transform:scale(.96);
+}
+
+
+/* ===========================
+   SMOOTH THEME TRANSITION
+=========================== */
+
+body,
+.dashboard-card,
+.form-container,
+.snippet-card,
+.card-icon,
+.card-content h2,
+.card-content h3,
+.dashboard-header h1,
+.dashboard-header p,
+.form-container h2,
+.form-group label,
+input,
+select,
+textarea,
+button,
+.save-btn,
+.save-btn1,
+.theme-btn,
+.snippet-title,
+.snippet-language,
+.snippet-category,
+.snippet-code,
+.snippet-favorite{
+    transition:
+        background-color .45s ease,
+        color .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease,
+        transform .25s ease;
+}
+body{
+    transition: background-color .5s ease, color .5s ease;
+}
+button{
+    transition: all .3s ease;
+}
+
+button:hover{
+    transform: translateY(-3px);
+}
+
+button:active{
+    transform: scale(.97);
+}
+input,
+select,
+textarea{
+    transition: all .3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    transform: scale(1.01);
+}
+.dashboard-card,
+.snippet-card{
+    transition: all .35s ease;
+}
+
+.dashboard-card:hover,
+.snippet-card:hover{
+    transform: translateY(-8px) scale(1.02);
+}
+.theme-btn{
+    transition: all .35s ease;
+}
+
+.theme-btn:hover{
+    transform: rotate(-10deg) scale(1.08);
+}
+/* #pc div{
+    background:#1a1a1a;
+    
+} */
+.snippet-card{
+    background:#ffffff;
+    
+}
+    </style>
+</head>
+
+<body>
+
+    <section class="dashboard">
+        <div class="dashboard-card">
+    <div class="card-icon">🎨</div>
+    <div class="card-content">
+        <h3>Theme</h3>
+        <button id="wb" class="theme-btn">🌙 Dark</button>
+    </div>
+</div>
+
+        <div class="dashboard-header">
+            <h1>CodeVault Dashboard</h1>
+            <p>Store and manage your favorite code snippets.</p>
+        </div>
+
+        <div class="dashboard-container">
+
+           <div class="dashboard-card">
+    <div class="card-icon">📄</div>
+    <div class="card-content">
+        <h3>Total Snippets</h3>
+        <h2 id="totalSnippets">0</h2>
+    </div>
+</div>
+
+<div class="dashboard-card">
+    <div class="card-icon">🎯</div>
+    <div class="card-content">
+        <h3>Important Snippets</h3>
+        <h2 id="favoriteSnippets">0</h2>
+    </div>
+</div>
+
+<div class="dashboard-card">
+    <div class="card-icon">💻</div>
+    <div class="card-content">
+        <h3>Total Languages</h3>
+        <h2 id="totalLanguages">0</h2>
+    </div>
+</div>
+
+<div class="dashboard-card">
+    <div class="card-icon">📂</div>
+    <div class="card-content">
+        <h3>Category</h3>
+        <h2 id="cat">0</h2>
+    </div>
+</div>
+<!-- <div class="dashboard-card">
+    <div class="card-icon">📂</div>
+    <div class="card-content">
+       
+         <button id="wb">White</button>
+    </div>
+</div> -->
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+      ADD CODE SNIPPET
+========================= -->
+
+    <section class="add-snippet">
+
+        <div class="form-container">
+
+            <h2>Add New Code Snippet</h2>
+
+            <form id="form">
+
+                <!-- Title -->
+
+                <div class="form-group">
+                    <label>Snippet Title</label>
+                    <input type="text" id="title" placeholder="Enter snippet title">
+                </div>
+
+                <!-- Language -->
+
+                <div class="form-group">
+                    <label>Programming Language</label>
+
+                    <select id="language">
+
+                        <option value="">Select Language</option>
+
+                        <option>HTML</option>
+                        <option>CSS</option>
+                        <option>JavaScript</option>
+                        <option>PHP</option>
+                        <option>Laravel</option>
+                        <option>Python</option>
+                        <option>Java</option>
+                        <option>C</option>
+                        <option>C++</option>
+                        <option>C#</option>
+                        <option>React</option>
+                        <option>Node.js</option>
+                        <option>SQL</option>
+
+                    </select>
+                </div>
+
+                <!-- Category -->
+
+                <div class="form-group">
+                    <label>Category</label>
+
+                    <select id="category">
+
+                        <option value="">Select Category</option>
+
+                        <option>Frontend</option>
+                        <option>Backend</option>
+                        <option>Database</option>
+                        <option>API</option>
+                        <option>Authentication</option>
+                        <option>Algorithm</option>
+                        <option>Utility</option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Code -->
+
+                <div class="form-group">
+                    <label>Code</label>
+
+                    <textarea id="code" rows="4" placeholder="Paste your code here..."></textarea>
+
+                </div>
+
+
+
+
+
+
+
+                <!-- Favorite -->
+
+                <div class="form-group">
+
+                    <label>Important</label>
+
+                    <select id="favorite">
+
+                        <option>No</option>
+                        <option>Yes</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Buttons -->
+
+                <div class="btn-group">
+
+                    <button type="button" class="save-btn" id="btn">
+                        💾 Save Snippet
+                    </button>
+
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+    <div id="pc">
+
+
+
+    </div>
+
+
+    <script>
+
+        let btn = document.getElementById("btn")
+        let pc = document.getElementById("pc")
+        let form = document.getElementById("form")
+        let l=document.getElementById("language");
+        let total=document.getElementById("totalSnippets");
+        let totall=document.getElementById("totalLanguages");
+        let fl=document.getElementById("favoriteSnippets");
+        let cat=document.getElementById("cat");
+        
+        // console.log(cat.matches('.cat1'))
+        // console.log(cat.closest('#cat'))
+        
+        let category=document.getElementById("category");
+        let wb=document.getElementById("wb")
+        totall.innerText=l.length
+        cat.innerText=category.length
+    //    console.log(wb) 
+
+       if(localStorage.getItem('theme')=='white')
+       {
+        console.log('Done')
+         document.body.classList.add('white')
+         document.body.classList.add('red')
+                document.body.classList.remove('dark')
+       }
+       else{
+        console.log('Not Done')
+           document.body.classList.add('dark')
+                document.body.classList.remove('white')
+                document.body.classList.remove('red')
+       }
+         wb.addEventListener("click",function(){
+            document.body.classList.toggle('red')
+            if(document.body.classList.contains('red')){
+
+
+                localStorage.setItem('theme','white')
+                document.body.classList.add('white')
+                document.body.classList.remove('dark')
+                
+                
+                
+                
+            }
+            else
+            {
+                localStorage.setItem('theme','dark')
+                document.body.classList.add('dark')
+                document.body.classList.remove('white')
+                
+            }
+         })
+       let data=[]
+        btn.addEventListener("click", function () {
+            // category
+            // language
+            // title
+            // favorite
+            // code
+
+             let t=document.getElementById("title").value;
+             let l=document.getElementById("language").value;
+             let c=document.getElementById("category").value;
+             let co=document.getElementById("code").value;
+             let f=document.getElementById("favorite").value;
+             let obj={
+                "Title":t,
+                "Languages":l,
+                "Category":c,
+                "Code":co,
+                "Favorite":f
+             }
+             data.push(obj)
+             localStorage.setItem('data',JSON.stringify(data));
+
+        })
+        data=JSON.parse(localStorage.getItem('data'))
+        // console.log(data)
+        for(let i=0;i<data.length;i++)
+        {
+            console.log(data[i])
+         let div1 = document.createElement("div");
+div1.className = "snippet-card";
+
+let h1 = document.createElement("h1");
+h1.className = "snippet-title";
+
+let h2 = document.createElement("h2");
+h2.className = "snippet-language";
+
+let h3 = document.createElement("h3");
+h3.className = "snippet-category";
+
+let h4 = document.createElement("pre");
+h4.className = "snippet-code";
+
+let h5 = document.createElement("p");
+h5.className = "snippet-favorite";
+
+h1.innerText = data[i]['Title'];
+h2.innerText = "💻 " + data[i]['Languages'];
+h3.innerText = "📂 " + data[i]['Category'];
+h4.innerText = data[i]['Code'];
+h5.innerText = "⭐ " + data[i]['Favorite'];
+
+div1.append(h1);
+div1.append(h2);
+div1.append(h3);
+div1.append(h4);
+div1.append(h5);
+
+pc.append(div1);
+
+            let edit=document.createElement("button")
+            edit.innerText="Edit"
+            div1.append(edit)
+            edit.setAttribute('type','button')
+            edit.addEventListener("click",function(){
+                let t=document.getElementById("title").value=data[i]['Title'];
+                let l=document.getElementById("language").value=data[i]['Languages'];
+                let c=document.getElementById("category").value=data[i]['Category'];
+                let co=document.getElementById("code").value=data[i]['Code'];
+                let f=document.getElementById("favorite").value=data[i]['Favorite'];
+                
+                
+                
+                let update=document.createElement("button")
+                update.innerText="Update"
+                form.append(update)
+                update.setAttribute('type','button')
+                update.setAttribute('class','save-btn1')
+                update.addEventListener("click",function(){
+                     let t=document.getElementById("title").value;
+                     let l=document.getElementById("language").value;
+                     let c=document.getElementById("category").value;
+                     let co=document.getElementById("code").value;
+                     let f=document.getElementById("favorite").value;
+                    obj={
+                "Title":t,
+                "Languages":l,
+                "Category":c,
+                "Code":co,
+                "Favorite":f
+             }
+                 data[i]=obj
+                 localStorage.setItem('data',JSON.stringify(data))
+
+                })
+                
+            })
+
+
+            let delet=document.createElement("button")
+            delet.innerText="Delete"
+            div1.append(delet)
+            delet.setAttribute("type","button")
+            delet.addEventListener("click",function(){
+                console.log(i)
+                console.log(data)
+                console.log(data.length)
+                data.splice(i,1)
+                console.log(data)
+                console.log(data.length)
+                console.log(delet.parentElement.remove())
+                localStorage.setItem("data",JSON.stringify(data))
+
+            })
+
+            total.innerText=data.length
+            // totall.innerText=l.length
+            // cat.innerText=category.length
+            if(data[i]['Favorite']=='Yes')
+            {
+                console.log(i+1)
+                fl.innerText=i+1
+
+            }
+
+
+
+
+        }
+
+       
+    </script>
+
+
+</body>
+
+</html>
